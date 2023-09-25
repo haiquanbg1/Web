@@ -17,8 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
+Route::prefix('home')->group(function (){
+    Route::get('/', [
+        'as' => 'home.index',
+        'uses' => 'App\Http\Controllers\HomeController@home'
+    ]);
 });
 
 Route::prefix('phim')->group(function() {

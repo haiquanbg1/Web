@@ -71,16 +71,14 @@
                         <!-- </div> -->
                     </div>
                 </div>
-
-        </div>
-
+                <div  class="pb-3">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <label class="form_label ml-3" style="color:red">*(Lưu ý: Mọi thông tin phải được nhập đầy đủ)</label>
+                </div>
+            </form>
+        </div><!-- /.container-fluid -->
     </div>
-
-    <button type="submit" class="btn btn-primary">Cập nhật</button>
-    </form>
-</div><!-- /.container-fluid -->
-</div>
-<!-- /.content -->
+    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

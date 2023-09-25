@@ -4,7 +4,7 @@
       aria-label="Cinema navigation bar"
     >
       <div class="container">
-        <a class="navbar-brand" href="/home">
+        <a class="navbar-brand" href="{{ route('home.index') }}">
           <img
             src="{{ asset('Fe/images/cinema.png') }}"
             alt="Logo"
@@ -12,7 +12,7 @@
             class="rounded-pill"
           />
         </a>
-        <a class="navbar-brand" href="/home">
+        <a class="navbar-brand" href="{{ route('home.index') }}">
           <h4>Royal Cinema</h4>
         </a>
 

@@ -84,7 +84,8 @@ class DanhSachPhimController extends Controller
             'Ngon_ngu' => $request->Ngon_ngu,
             'Tom_tat' => $request->Tom_tat,
             'Trailer' => $request->Trailer,
-            'Tuoi_gioi_han' => $request->Tuoi_gioi_han
+            'Tuoi_gioi_han' => $request->Tuoi_gioi_han,
+            'Image' => $request->Image
         ]);
         return redirect()->route('danhsachphim.index');
     }

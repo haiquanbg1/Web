@@ -21,42 +21,24 @@
 
       <div class="product-section-sapchieu">
         <div class="row">
-          <!-- Start Column 1 -->
+        @foreach($DataDS as $data)
           <div class="col-12 col-md-4 col-lg-3 mb-5">
-            <a class="product-item" href="#">
+            <a class="product-item" href="{{ asset('Fe/filmDetails.html') }}">
               <img
-                src="{{ asset('Fe/images/batman.png') }}"
+                src="{{ $DataCT->find($data->Ma_phim)->Image }}"
                 class="img-fluid product-thumbnail"
                 style="border-radius: 20px;"
               />
-              <h2 class="product-title">Người Dơi Bắt Đầu </h2>
-              <p class="product-price" style="margin-bottom: 2px;">Thể loại: Hành động</p>
-              <p class="product-price" style="margin-bottom: 2px;">Thời lượng: 140 phút</p>
+              <h2 class="product-title"><?php echo $data->Ten_phim; ?></h2>
+              <p class="product-price" style="margin-bottom: 2px;"><?php echo "Thể Loại: " . $data->The_loai; ?></p>
+              <p class="product-price" style="margin-bottom: 2px;"><?php echo "Thời lượng: " . $data->Thoi_luong . " phút"; ?></p>
 
               <span class="icon-cross">
                 <img src="{{ asset('Fe/images/cross.svg') }}" class="img-fluid" />
               </span>
             </a>
           </div>
-          <!-- End Column 1 -->
-          <!-- Start Column 2-->
-          <div class="col-12 col-md-4 col-lg-3 mb-5">
-            <a class="product-item" href="#">
-              <img
-                src="{{ asset('Fe/images/kekientao.jpg') }}"
-                class="img-fluid product-thumbnail"
-                style="border-radius: 20px;"
-              />
-              <h2 class="product-title">Kẻ Kiến Tạo</h2>
-              <p class="product-price" style="margin-bottom: 2px;">Thể loại: Hành động, Phiêu lưu</p>
-              <p class="product-price" style="margin-bottom: 2px;">Thời lượng: 133 phút</p>
-
-              <span class="icon-cross">
-                <img src="{{ asset('Fe/images/cross.svg') }}" class="img-fluid" />
-              </span>
-            </a>
-          </div>
-          <!-- End Column 2 -->
+          @endforeach
         </div>
       </div>
 @endsection
