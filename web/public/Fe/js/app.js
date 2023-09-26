@@ -1,46 +1,96 @@
-var productSection = document.querySelector(".product-section");
-var productSectionSapChieu = document.querySelector(".product-section-sapchieu");
-var productSectionDacBiet = document.querySelector(".product-section-dacbiet");
+var productSection = document.querySelector("#phimdangchieu");
+var productSectionSapChieu = document.querySelector("#phimsapchieu");
+var productSectionDacBiet = document.querySelector("#phimdacbiet");
 var sapchieu = document.querySelector("#sapchieu");
 var dangchieu = document.querySelector("#dangchieu");
 var dacbiet = document.querySelector("#dacbiet");
 
-sapchieu.addEventListener('click',function(){
-    productSectionDacBiet.classList.remove("openMovie");
-    productSection.classList.remove("openMovie");
-    productSectionSapChieu.classList.remove("closeMovie");
-    productSectionSapChieu.classList.add("openMovie");
-    productSection.classList.add("closeMovie");
-    productSectionDacBiet.classList.add("closeMovie");
-    sapchieu.setAttribute("class", "nav-link active");
-    dangchieu.setAttribute("class", "nav-link");
-    dacbiet.setAttribute("class", "nav-link");
-})
+var items =  document.querySelectorAll(".item");
 
-dangchieu.addEventListener('click',function(){
-    productSectionSapChieu.classList.remove("openMovie");
-    productSectionDacBiet.classList.remove("openMovie");
-    productSection.classList.remove("closeMovie");
-    productSection.classList.add("openMovie");
-    productSectionSapChieu.classList.add("closeMovie");
-    productSectionDacBiet.classList.add("closeMovie");
-    dangchieu.setAttribute("class", "nav-link active");
-    sapchieu.setAttribute("class", "nav-link");
-    dacbiet.setAttribute("class", "nav-link");
-})
+items.forEach(item => {
+    item.addEventListener("click", function() {
+        productSection.setAttribute("style", "display:None;");
+        productSectionSapChieu.setAttribute("style", "display:None;");
+        productSectionDacBiet.setAttribute("style", "display:None;");
+        switch (item.id) {
+            case 'sapchieu':
+                productSectionSapChieu.setAttribute("style", "display:block;");
+                sapchieu.setAttribute("class", "nav-link active");
+                dangchieu.setAttribute("class", "nav-link");
+                dacbiet.setAttribute("class", "nav-link");
+                break;
+            case 'dangchieu':
+                productSection.setAttribute("style", "display:block;");
+                sapchieu.setAttribute("class", "nav-link");
+                dangchieu.setAttribute("class", "nav-link active");
+                dacbiet.setAttribute("class", "nav-link");
+                break;
+            case 'dacbiet':
+                productSectionDacBiet.setAttribute("style", "display:block;");
+                sapchieu.setAttribute("class", "nav-link");
+                dangchieu.setAttribute("class", "nav-link");
+                dacbiet.setAttribute("class", "nav-link active");
+                break;
+            default:
+                break;
+        }
+    });
+});
 
-dacbiet.addEventListener('click',function(){
-    productSection.classList.remove("openMovie");
-    productSectionSapChieu.classList.remove("openMovie");
-    productSectionDacBiet.classList.remove("closeMovie");
-    productSectionDacBiet.classList.add("openMovie");
-    productSection.classList.add("closeMovie");
-    productSectionSapChieu.classList.add("closeMovie");
-    dacbiet.setAttribute("class", "nav-link active");
-    dangchieu.setAttribute("class", "nav-link");
-    sapchieu.setAttribute("class", "nav-link");
-})
 
+
+
+var ngay1 = document.querySelector("#ngay1");
+var ngay2 = document.querySelector("#ngay2");
+var ngay3 = document.querySelector("#ngay3");
+var ngay4 = document.querySelector("#ngay4");
+var giongay1 = document.querySelector("#gio1");
+var giongay2 = document.querySelector("#gio2");
+var giongay3 = document.querySelector("#gio3");
+var giongay4 = document.querySelector("#gio4");
+
+var days = document.querySelectorAll(".day");
+
+days.forEach(days => {
+    days.addEventListener("click", function() {
+        giongay1.setAttribute("style","display:None;");
+        giongay2.setAttribute("style","display:None;");
+        giongay3.setAttribute("style","display:None;");
+        giongay4.setAttribute("style","display:None;");
+        switch (days.id) {
+            case 'ngay1':
+                giongay1.setAttribute("style","display:block;");
+                ngay1.setAttribute("class", "nav-link active");
+                ngay2.setAttribute("class", "nav-link");
+                ngay3.setAttribute("class", "nav-link");
+                ngay4.setAttribute("class", "nav-link");
+                break;
+            case 'ngay2':
+                giongay2.setAttribute("style","display:block;");
+                ngay2.setAttribute("class", "nav-link active");
+                ngay1.setAttribute("class", "nav-link");
+                ngay3.setAttribute("class", "nav-link");
+                ngay4.setAttribute("class", "nav-link");
+                break;
+            case 'ngay3':
+                giongay3.setAttribute("style","display:block;");
+                ngay3.setAttribute("class", "nav-link active");
+                ngay2.setAttribute("class", "nav-link");
+                ngay1.setAttribute("class", "nav-link");
+                ngay4.setAttribute("class", "nav-link");
+                break;
+            case 'ngay4':
+                giongay4.setAttribute("style","display:block;");
+                ngay4.setAttribute("class", "nav-link active");
+                ngay2.setAttribute("class", "nav-link");
+                ngay3.setAttribute("class", "nav-link");
+                ngay1.setAttribute("class", "nav-link");
+                break;
+            default:
+                break;
+        }
+    });
+});
 
 
 
