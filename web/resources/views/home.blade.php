@@ -51,14 +51,14 @@
 
       @foreach($dataDS as $data)
         <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-          <a class="product-item" href="cart.html">
+          <a class="product-item" href="{{ route('details', ['Ma_phim' => $data->Ma_phim]) }}">
             <img src="{{ $dataCT->find($data->Ma_phim)->Image }}" class="img-fluid product-thumbnail" style="border-radius: 20px;" />
             <h2 class="product-title"><?php echo $data->Ten_phim; ?></h2>
             <p class="product-price"><?php echo "Thể Loại: " . $data->The_loai; ?></p>
             <p class="product-price"><?php echo "Thời lượng: " . $data->Thoi_luong . " phút"; ?></p>
 
             <span class="icon-cross">
-              <img src="{{ asset('Fe/images/cross.svg') }}" class="img-fluid" />
+              <img href="{{ route('details', ['Ma_phim' => $data->Ma_phim]) }}" src="{{ asset('Fe/images/cross.svg') }}" class="img-fluid" />
             </span>
           </a>
         </div>

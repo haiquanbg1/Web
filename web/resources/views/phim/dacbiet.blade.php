@@ -17,7 +17,7 @@
             <h3><a href="{{ route('phim.dacbiet') }}" class="nav-link active" id="dacbiet">SUẤT CHIẾU ĐẶC BIỆT</a></h3>
         </li>
     </ul>
-    <div class="product-section-dacbiet">
+    <div class="product-section">
         <div class="row">
             <!-- Start Column 1 -->
             <div class="col-12 col-md-4 col-lg-3 mb-5">

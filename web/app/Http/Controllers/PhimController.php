@@ -13,18 +13,19 @@ class PhimController extends Controller
     private $danhsachphim;
     private $chitietphim;
     private $lichchieu;
+    private $Now;
 
     public function __construct(DanhSachPhim $danhsachphim, ChiTietPhim $chitietphim, LichChieu $lichchieu)
     {
         $this->danhsachphim = $danhsachphim;
         $this->chitietphim = $chitietphim;
         $this->lichchieu = $lichchieu;
+        $this->Now = Carbon::now('Asia/Ho_Chi_Minh');
     }
 
     public function dangchieu()
     {
-        $Now = Carbon::now('Asia/Ho_Chi_Minh');
-        $DataDS = $this->danhsachphim->all()->where('Ngay_khoi_chieu', '<=', $Now);
+        $DataDS = $this->danhsachphim->all()->where('Ngay_khoi_chieu', '<=', $this->Now);
         $DataCT = $this->chitietphim->all();
             // foreach($DataDS as $data)
             // {
@@ -39,8 +40,7 @@ class PhimController extends Controller
 
     public function sapchieu()
     {
-        $Now = Carbon::now('Asia/Ho_Chi_Minh');
-        $DataDS = $this->danhsachphim->all()->where('Ngay_khoi_chieu', '>', $Now);
+        $DataDS = $this->danhsachphim->all()->where('Ngay_khoi_chieu', '>', $this->Now);
         $DataCT = $this->chitietphim->all();
             // foreach($DataDS as $data)
             // {
@@ -60,10 +60,11 @@ class PhimController extends Controller
 
     public function detail($Ma_phim)
     {
+        $Date = Carbon::now('Asia/Ho_Chi_Minh');
         $DataDS = $this->danhsachphim->find($Ma_phim);
         $DataCT = $this->chitietphim->find($Ma_phim);
-        $LC = $this->lichchieu->find($Ma_phim);
+        $LC = $this->lichchieu->all()->where('Ma_phim', '=', $DataDS->Ma_phim);
 
-        return view('phim.phimdetails', compact('DataDS', 'DataCT', 'LC'));
+        return view('phim.phimdetails', compact('DataDS', 'DataCT', 'LC', 'Date'));
     }
 }
