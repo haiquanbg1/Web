@@ -41,4 +41,8 @@ Route::prefix('phim')->group(function() {
         'as' => 'phim.dacbiet',
         'uses' => 'App\Http\Controllers\PhimController@dacbiet'
     ]);
+    Route::get('/details/{Ma_phim}', [
+        'as' => 'details',
+        'uses' => 'App\Http\Controllers\PhimController@detail'
+    ]);
 });

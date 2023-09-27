@@ -24,7 +24,8 @@
         <!-- Start Column 1 -->
         @foreach($DataDS as $data)
           <div class="col-12 col-md-4 col-lg-3 mb-5">
-            <a class="product-item" href="{{ asset('Fe/filmDetails.html') }}">
+            <!-- <a class="product-item" href="{{ asset('Fe/filmDetails.html') }}"> -->
+            <a class="product-item" href="{{ route('details', ['Ma_phim' => $data->Ma_phim]) }}">
               <img
                 src="{{ $DataCT->find($data->Ma_phim)->Image }}"
                 class="img-fluid product-thumbnail"
@@ -35,7 +36,7 @@
               <p class="product-price" style="margin-bottom: 2px;"><?php echo "Thời lượng: " . $data->Thoi_luong . " phút"; ?></p>
 
               <span class="icon-cross">
-                <img src="{{ asset('Fe/images/cross.svg') }}" class="img-fluid" />
+                <img href="{{ route('details', ['Ma_phim' => $data->Ma_phim]) }}" src="{{ asset('Fe/images/cross.svg') }}" class="img-fluid" />
               </span>
             </a>
           </div>
