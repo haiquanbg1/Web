@@ -27,6 +27,7 @@
           <h2 class="product-title"><?php echo $data->Ten_phim; ?></h2>
           <p class="product-price" style="margin-bottom: 2px;"><?php echo "Thể Loại: " . $data->The_loai; ?></p>
           <p class="product-price" style="margin-bottom: 2px;"><?php echo "Thời lượng: " . $data->Thoi_luong . " phút"; ?></p>
+          <p class="product-price" style="margin-bottom: 2px;"><?php echo "Ngày khởi chiếu: " . $data->Ngay_khoi_chieu; ?></p>
 
           <span class="icon-cross">
             <img href="{{ route('details', ['Ma_phim' => $data->Ma_phim]) }}" src="{{ asset('Fe/images/cross.svg') }}" class="img-fluid" />

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LichChieu extends Model
 {
-    protected $fillable = ['Ma_phim', 'Ma_phong','Ngay_chieu', 'Gio_chieu'];
+    protected $fillable = ['Ma_phim', 'Ma_phong','Ngay_chieu', 'Gio_chieu', 'Trang_thai'];
     public  $primaryKey = "Ma_lich_chieu";
     use HasFactory;
 }

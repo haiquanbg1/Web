@@ -46,7 +46,7 @@
           <div class="col-lg-4 col-md-4 col-sm-4">
             <h5 style="color: black;font-size:17px">NGÔN NGỮ:</h5>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="font-size: 17px;">{{ $DataCT->Chi_tiet }}</div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="font-size: 17px;">{{ $DataCT->Ngon_ngu }}</div>
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-4">
@@ -62,104 +62,42 @@
   </div>
   <!--Ngay chieu-->
   <div class="container mt-3">
-    <ul class="nav nav-tabs">
-      <!-- <li class="nav-item">
-        <h3><a class="nav-link day" id="ngay1"><?php echo $Date->day . "/" . $Date->month . " T" . $Date->dayOfWeek + 2; ?></a></h3>
-      </li> -->
+    <ul class="nav nav-tabs" style="justify-content: space-between; cursor: pointer;">
       @for($i=1; $i<=7; $i++) <?php
-                              $Day = "T" . $Date->dayOfWeek + 2;
-                              if ($Day == "T8") {
+                              $Day = "T" . $Date->dayOfWeek+1;
+                              if ($Day == "T1") {
                                 $Day = "CN";
                               }
-                              $Date->addDay();
                               ?> 
         <li class="nav-item">
         <h3><a class="nav-link day" id=<?php echo "ngay" . $i; ?>><?php echo $Date->day . "/" . $Date->month . " " . $Day; ?></a></h3>
         </li>
+        <?php $Date->addDay(); ?>
         @endfor
         <?php $Date->subDays(7); ?>
     </ul>
   </div>
   <!--Gio chieu-->
-  <!-- <?php $count = 1; $dataDay = $LC->where('Ngay_chieu', '=', $Date->toDateString()); ?>
-  <div class="container mt-3" id=<?php //echo "gio" . $count++; ?>>
-      <div class="row">
-        @foreach($dataDay as $dataTime)
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-          <h4><?php //echo $dataTime->Gio_chieu; ?></h4>
-        </div>
-        @endforeach -->
+   <?php $count = 1; $dataDay = $LC->where('Ngay_chieu', '=', $Date->toDateString()); ?>
   @for($i=1; $i<=7; $i++)
     <?php  $dataDay = $LC->where('Ngay_chieu', '=', $Date->toDateString()); $Date->addDay();?>
     <div class="container mt-3" id=<?php echo "gio" . $i; ?> style="display: none;">
       <div class="row">
         @foreach($dataDay as $dataTime)
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-          <h4><?php echo $dataTime->Gio_chieu; ?></h4>
+        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(171, 165, 147);color: rgb(168, 141, 50); display:flex; justify-content:center; align-items:center; width:150px; border-radius:5px; cursor:pointer;">
+          <h4 class="pt-2"><?php $s = $dataTime->Gio_chieu; echo substr_replace($s,"",strlen($s)-3); ?></h4>
         </div>
         @endforeach
-        <!-- <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-          <h4>09:00</h4>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-          <h4>13:00</h4>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-          <h4>17:00</h4>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-          <h4>23:00</h4>
-        </div> -->
       </div>
     </div>
   @endfor
-  <!-- <div class="container mt-3" id="gio1">
-    <div class="row">
-      <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-        <h4>09:00</h4>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-        <h4>13:00</h4>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-        <h4>17:00</h4>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;">
-        <h4>23:00</h4>
-      </div>
-    </div>
-  </div> -->
-  <!-- <div class="container mt-3" id="gio2" style="display: none;">
-      <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>10:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>14:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>18:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>21:00</h4></div>
-      </div>
-    </div>
-    <div class="container mt-3" id="gio3" style="display: none;">
-      <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>08:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>11:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>15:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>20:00</h4></div>
-      </div>
-    </div>
-    <div class="container mt-3" id="gio4" style="display: none;">
-      <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>11:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>13:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>19:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>23:00</h4></div>
-      </div>
-    </div> -->
 </div>
 <!-- End Product Section -->
 
 <!--Trailer-->
 <div class="row bg-secondary" style="margin-bottom:20px">
   <div class="col-md-9" style="margin-left: 12.5%; margin-bottom:35px;">
-    <h2 class="text-center" style="color: white; text-decoration:underline;margin:20px 0px;">TRAILER</h2>
+    <h2 class="text-center" style="color: rgb(227, 216, 186); text-decoration:underline;margin:20px 0px;">TRAILER</h2>
     <iframe style="width:100%; height: 70vh;" src="{{ $DataCT->Trailer }}" allowfullscreen></iframe>
   </div>
 </div>

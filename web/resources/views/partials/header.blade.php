@@ -24,7 +24,7 @@
             <li><a class="nav-link" href="{{ asset('Fe/schedule.html') }}">Lịch chiếu</a></li>
             <li><a class="nav-link" href="{{ asset('Fe/ticket.html') }}">Giá vé</a></li>
             <li><a class="nav-link" href="{{ asset('Fe/news.html') }}">Tin tức và ưu đãi</a></li>
-            <li><a class="nav-link" href="{{ asset('Fe/login.html') }}">Đăng nhập</a></li>
+            <li><a class="nav-link" href="{{ route('login') }}">Đăng nhập</a></li>
           </ul>
           <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
             <li>

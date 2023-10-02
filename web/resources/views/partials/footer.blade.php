@@ -15,7 +15,7 @@
               </li>
               <li>
                 <i class="fa fa-angle-right"></i>
-                <span>Royal Name Từ Liêm - Hotline: 0374106611</span>
+                <span>Royal Nam Từ Liêm - Hotline: 0374106611</span>
               </li>
               <li>
                 <i class="fa fa-angle-right"></i>
@@ -60,7 +60,7 @@
           <!-- Start Column 2 -->
           <div class="col-12 col-md-4 col-lg-4 mb-5 mb-md-0">
             <h2 class="mb-4 section-title">Kết nối với chúng tôi</h2>
-            <a href="https://www.facebook.com/hieudoan1234"
+            <a href="https://www.facebook.com/PhamQuan1104"
               ><img
                 src="{{ asset('Fe/images/facebook.png') }}"
                 alt="facebook"
@@ -90,7 +90,7 @@
           <!-- Start Column 3 -->
           <div class="col-12 col-md-4 col-lg-4 mb-5 mb-md-0">
             <h2 class="mb-4 section-title">Chăm sóc khách hàng</h2>
-            <div>Hotline: 1900 6017</div>
+            <div>Hotline: 0866755209</div>
             <div>
               Giờ làm việc: 8:00 - 22:00 (Tất cả các ngày bao gồm cả Lễ Tết)
             </div>

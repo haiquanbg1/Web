@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\admin\users\RegisterController;
+use App\Http\Controllers\PostController;
+use GuzzleHttp\Middleware;
+use Illuminate\Routing\Controllers\Middleware as ControllersMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,16 +24,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/home', function () {
-//     return view('home');
-// });
-
 Route::prefix('home')->group(function (){
     Route::get('/', [
         'as' => 'home.index',
         'uses' => 'App\Http\Controllers\HomeController@home'
-    ]);
+    ])->middleware(['auth']);
 });
+
+// route::middleware(['auth']) ->group(function(){
+//     route::get('home/admin',[HomeController::class,'home']) -> name('admin');
+// });
 
 Route::prefix('phim')->group(function() {
     Route::get('/', [
@@ -45,4 +52,14 @@ Route::prefix('phim')->group(function() {
         'as' => 'details',
         'uses' => 'App\Http\Controllers\PhimController@detail'
     ]);
+});
+
+route::get('admin/user/login',[LoginController::class,'index'])->name('login');
+
+route::post('admin/user/login/store',[LoginController::class,'store']);
+
+Route::prefix('register')->group(function (){
+    route::get('/',[RegisterController::class,'register']) -> name('register');
+
+    Route::post('/add',[RegisterController::class,'add'])->name('add');
 });

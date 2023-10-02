@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Slider;
 use App\Models\DanhSachPhim;
 use App\Models\ChiTietPhim;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,7 @@ class HomeController extends Controller
     public function home()
     {
         $count = 0;
-        $dataDS = $this->danhsachphim->all()->take(3);
+        $dataDS = $this->danhsachphim->all()->where('Trang_thai', '=', 1)->take(3);
         $dataCT = $this->chitietphim->all();
         $dataSlider = $this->slider->all();
         return view('home', compact('dataSlider', 'dataDS', 'dataCT', 'count'));

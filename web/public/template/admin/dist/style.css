@@ -1,0 +1,51 @@
+  .input-box {
+    width: 100%;
+    margin-top: 0px;
+  }
+  .input-box label {
+    color: #333;
+  }
+  .form :where(.input-box input, .select-box) {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    color: #707070;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+  }
+  .input-box input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+  .column {
+    display: flex;
+    column-gap: 5px;
+  }
+ .gender-box {
+    margin-top: 20px;
+  }
+  .gender-box label {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+  :where(.gender-option, .gender) {
+    display: flex;
+    align-items: center;
+    
+    column-gap: 50px;
+    flex-wrap: wrap;
+  }
+  .gender {
+    column-gap: 5px;
+  }
+  .gender input {
+    accent-color: rgb(15, 91, 36);
+  }
+  :where(.gender input, .gender label) {
+    cursor: pointer;
+  }

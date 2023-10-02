@@ -25,7 +25,7 @@ class DanhSachPhimController extends Controller
 
     public function index()
     {
-        $DataDanhsachphim = $this->danhsachphim->latest()->paginate(5);
+        $DataDanhsachphim = $this->danhsachphim->latest()->where('Trang_thai', '=', 1)->paginate(5);
         return view('danhsachphim.index', compact('DataDanhsachphim'));
     }
 
@@ -65,8 +65,9 @@ class DanhSachPhimController extends Controller
 
     public function delete($Ma_phim)
     {
-        $this->chitietphim->find($Ma_phim)->delete();
-        $this->danhsachphim->find($Ma_phim)->delete();
+        $this->danhsachphim->find($Ma_phim)->update([
+            'Trang_thai' => 0
+        ]);
         return redirect()->route('danhsachphim.index');
     }
 

@@ -25,32 +25,18 @@ class PhimController extends Controller
 
     public function dangchieu()
     {
-        $DataDS = $this->danhsachphim->all()->where('Ngay_khoi_chieu', '<=', $this->Now);
+        $Date = Carbon::now('Asia/Ho_Chi_Minh');
+        $DataDS = $this->danhsachphim->all()->where('Ngay_khoi_chieu', '<=', $this->Now)->where('Trang_thai', '=', 1);
         $DataCT = $this->chitietphim->all();
-            // foreach($DataDS as $data)
-            // {
-            //     if($data->Ngay_khoi_chieu > $Now->toDateString())
-            //     {
-            //         //$DataCT->find($data->Ma_phim)->delete();
-            //         $DataDS->find($data->Ma_phim)->delete();
-            //     }
-            // }
-        return view('phim.dangchieu', compact('DataDS', 'DataCT'));
+        return view('phim.dangchieu', compact('DataDS', 'DataCT', 'Date'));
     }
 
     public function sapchieu()
     {
-        $DataDS = $this->danhsachphim->all()->where('Ngay_khoi_chieu', '>', $this->Now);
+        $Date = Carbon::now('Asia/Ho_Chi_Minh');
+        $DataDS = $this->danhsachphim->all()->where('Ngay_khoi_chieu', '>', $this->Now)->where('Trang_thai', '=', 1);
         $DataCT = $this->chitietphim->all();
-            // foreach($DataDS as $data)
-            // {
-            //     if($data->Ngay_khoi_chieu <= $Now->toDateString())
-            //     {
-            //         $DataCT->find($data->Ma_phim)->delete();
-            //         $DataDS->find($data->Ma_phim)->delete();
-            //     }
-            // }
-        return view('phim.sapchieu', compact('DataDS', 'DataCT'));
+        return view('phim.sapchieu', compact('DataDS', 'DataCT', 'Date'));
     }
 
     public function dacbiet()
@@ -63,8 +49,10 @@ class PhimController extends Controller
         $Date = Carbon::now('Asia/Ho_Chi_Minh');
         $DataDS = $this->danhsachphim->find($Ma_phim);
         $DataCT = $this->chitietphim->find($Ma_phim);
-        $LC = $this->lichchieu->all()->where('Ma_phim', '=', $DataDS->Ma_phim);
+        $LC = $this->lichchieu->all()->sortBy('Gio_chieu')->where('Ma_phim', '=', $DataDS->Ma_phim);
 
+        if($Date < $DataDS->Ngay_khoi_chieu)
+            $Date = new Carbon($DataDS->Ngay_khoi_chieu);
         return view('phim.phimdetails', compact('DataDS', 'DataCT', 'LC', 'Date'));
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Sep 27, 2023 at 05:25 PM
+-- Generation Time: Oct 02, 2023 at 03:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -100,35 +100,20 @@ CREATE TABLE `danh_sach_phims` (
   `Ngay_khoi_chieu` date NOT NULL,
   `The_loai` varchar(500) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL
+  `created_at` datetime DEFAULT NULL,
+  `Trang_thai` bit(1) DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `danh_sach_phims`
 --
 
-INSERT INTO `danh_sach_phims` (`Ma_phim`, `Ten_phim`, `Thoi_luong`, `Ngay_khoi_chieu`, `The_loai`, `updated_at`, `created_at`) VALUES
-(8, 'Ác Quỷ Ma Sơ II', 110, '2023-09-08', 'Kinh Dị, Hồi Hộp', '2023-09-25 08:11:21', '2023-09-25 08:11:21'),
-(9, '3DCG! Shin - Cậu Bé Bút Chì: Đại Chiến Siêu Năng Lực ~ Shusi Bay ~', 94, '2023-08-25', 'Hoạt hình, Phiêu lưu', '2023-09-25 08:14:23', '2023-09-25 08:14:23'),
-(10, 'Án Mạng Ở Venice', 103, '2023-09-15', 'Tội Phạm, Tâm lý', '2023-09-25 09:53:34', '2023-09-25 09:53:34'),
-(11, 'Biệt Đội Đánh Thuê 4', 103, '2023-09-22', 'Hành động, Phiêu lưu', '2023-09-25 10:08:18', '2023-09-25 10:08:18'),
-(12, 'Mộng Du', 100, '2023-10-06', 'Tâm lý, Kinh dị', '2023-09-27 15:11:49', '2023-09-27 15:11:49');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `failed_jobs`
---
-
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(191) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `danh_sach_phims` (`Ma_phim`, `Ten_phim`, `Thoi_luong`, `Ngay_khoi_chieu`, `The_loai`, `updated_at`, `created_at`, `Trang_thai`) VALUES
+(8, 'Ác Quỷ Ma Sơ II', 110, '2023-09-08', 'Kinh Dị, Hồi Hộp', '2023-09-25 08:11:21', '2023-09-25 08:11:21', b'1'),
+(9, '3DCG! Shin - Cậu Bé Bút Chì: Đại Chiến Siêu Năng Lực ~ Shusi Bay ~', 94, '2023-08-25', 'Hoạt hình, Phiêu lưu', '2023-09-29 07:41:23', '2023-09-25 08:14:23', b'0'),
+(10, 'Án Mạng Ở Venice', 103, '2023-09-15', 'Tội Phạm, Tâm lý', '2023-09-25 09:53:34', '2023-09-25 09:53:34', b'1'),
+(11, 'Biệt Đội Đánh Thuê 4', 103, '2023-09-22', 'Hành động, Phiêu lưu', '2023-09-25 10:08:18', '2023-09-25 10:08:18', b'1'),
+(12, 'Mộng Du', 100, '2023-10-06', 'Tâm lý, Kinh dị', '2023-09-27 15:11:49', '2023-09-27 15:11:49', b'1');
 
 -- --------------------------------------------------------
 
@@ -642,20 +627,6 @@ CREATE TABLE `hoa_dons` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khach_hangs`
---
-
-CREATE TABLE `khach_hangs` (
-  `Ma_khach_hang` int(11) NOT NULL,
-  `Ten` varchar(50) NOT NULL,
-  `So_dien_thoai` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Ngay_sinh` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `lich_chieus`
 --
 
@@ -666,16 +637,23 @@ CREATE TABLE `lich_chieus` (
   `Ngay_chieu` date NOT NULL,
   `Gio_chieu` time NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL
+  `created_at` datetime DEFAULT NULL,
+  `Trang_thai` bit(1) DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `lich_chieus`
 --
 
-INSERT INTO `lich_chieus` (`Ma_lich_chieu`, `Ma_phim`, `Ma_phong`, `Ngay_chieu`, `Gio_chieu`, `updated_at`, `created_at`) VALUES
-(8, 10, 2, '2023-09-28', '10:00:00', '2023-09-27 12:56:54', '2023-09-27 12:56:54'),
-(9, 10, 1, '2023-09-27', '22:00:00', '2023-09-27 12:57:23', '2023-09-27 12:57:23');
+INSERT INTO `lich_chieus` (`Ma_lich_chieu`, `Ma_phim`, `Ma_phong`, `Ngay_chieu`, `Gio_chieu`, `updated_at`, `created_at`, `Trang_thai`) VALUES
+(8, 10, 2, '2023-09-28', '10:00:00', '2023-09-30 08:02:49', '2023-09-27 12:56:54', b'0'),
+(9, 10, 1, '2023-09-27', '22:00:00', '2023-09-30 08:02:49', '2023-09-27 12:57:23', b'0'),
+(10, 12, 5, '2023-10-04', '23:00:00', '2023-09-30 08:58:49', '2023-09-30 08:58:49', b'1'),
+(11, 12, 3, '2023-10-08', '15:00:00', '2023-10-02 06:10:02', '2023-10-02 06:10:02', b'1'),
+(12, 12, 3, '2023-10-08', '08:00:00', '2023-10-02 06:35:32', '2023-10-02 06:35:32', b'1'),
+(13, 12, 1, '2023-10-06', '18:00:00', '2023-10-02 07:12:36', '2023-10-02 07:12:36', b'1'),
+(14, 12, 2, '2023-10-06', '20:00:00', '2023-10-02 07:12:59', '2023-10-02 07:12:59', b'1'),
+(15, 12, 1, '2023-10-06', '22:10:00', '2023-10-02 07:13:25', '2023-10-02 07:13:25', b'1');
 
 -- --------------------------------------------------------
 
@@ -699,18 +677,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2023_09_24_051027_create_sliders_table', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_reset_tokens`
---
-
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(191) NOT NULL,
-  `token` varchar(191) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -783,15 +749,28 @@ INSERT INTO `sliders` (`id`, `Image`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` int(10) NOT NULL,
   `name` varchar(191) NOT NULL,
   `email` varchar(191) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `Ngay_sinh` date DEFAULT NULL,
+  `Gioi_tinh` bit(1) DEFAULT NULL,
+  `So_dien_thoai` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `Ngay_sinh`, `Gioi_tinh`, `So_dien_thoai`) VALUES
+(1, 'Pham Quan', 'quanpham2112004@gmail.com', NULL, '$2y$10$L3sJwI3PwusapX6XhDKe..CNUNecLMxKuFQwgS1owhnklP/yQEBYe', NULL, '2023-10-02 02:11:50', '2023-10-02 02:11:50', '2004-11-02', b'1', '0368407458'),
+(2, 'Quan', 'Phamquan2112004@gmail.com', NULL, '$2y$10$rAJHoRYolNaunrfi2umxBuAWYnmE.4juVmikWoLfBfdtL4fdpoKXC', NULL, '2023-10-02 02:13:36', '2023-10-02 02:13:36', '2004-11-02', b'1', '0368407458'),
+(3, 'Khanh', 'khanhga@gmail.com', NULL, '$2y$10$NAYcXL9d4qYPz3mqpVfFWulrE1UcQFjgvUuB0Taq./hBIq8xsM83W', NULL, '2023-10-02 02:14:36', '2023-10-02 02:14:36', '2004-11-26', b'1', '0368407458'),
+(4, 'khanh', 'Khanhgaa@gmail.com', NULL, '$2y$10$2UFhcmuGBXI7MC9tqopWfOnGMDIlHmHLBNPZ3AUFve.zFrOjzPXwe', NULL, '2023-10-02 02:15:43', '2023-10-02 02:15:43', '2023-10-17', b'0', '0368407458');
 
 -- --------------------------------------------------------
 
@@ -824,13 +803,6 @@ ALTER TABLE `danh_sach_phims`
   ADD PRIMARY KEY (`Ma_phim`) USING BTREE;
 
 --
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
 -- Indexes for table `ghes`
 --
 ALTER TABLE `ghes`
@@ -845,12 +817,6 @@ ALTER TABLE `hoa_dons`
   ADD KEY `FK_hoa_dons_khach_hangs` (`Ma_khach_dat`) USING BTREE;
 
 --
--- Indexes for table `khach_hangs`
---
-ALTER TABLE `khach_hangs`
-  ADD PRIMARY KEY (`Ma_khach_hang`) USING BTREE;
-
---
 -- Indexes for table `lich_chieus`
 --
 ALTER TABLE `lich_chieus`
@@ -863,12 +829,6 @@ ALTER TABLE `lich_chieus`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_reset_tokens`
---
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -923,12 +883,6 @@ ALTER TABLE `danh_sach_phims`
   MODIFY `Ma_phim` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `ghes`
 --
 ALTER TABLE `ghes`
@@ -941,16 +895,10 @@ ALTER TABLE `hoa_dons`
   MODIFY `Ma_hoa_don` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `khach_hangs`
---
-ALTER TABLE `khach_hangs`
-  MODIFY `Ma_khach_hang` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `lich_chieus`
 --
 ALTER TABLE `lich_chieus`
-  MODIFY `Ma_lich_chieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Ma_lich_chieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -980,7 +928,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -1002,7 +950,7 @@ ALTER TABLE `ghes`
 -- Constraints for table `hoa_dons`
 --
 ALTER TABLE `hoa_dons`
-  ADD CONSTRAINT `FK_hoa_dons_khach_hangs` FOREIGN KEY (`Ma_khach_dat`) REFERENCES `khach_hangs` (`Ma_khach_hang`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_hoa_dons_users` FOREIGN KEY (`Ma_khach_dat`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `lich_chieus`
