@@ -9,6 +9,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link href="css/tiny-slider.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <link rel="icon" type="image/x-icon" href="images/cinema.png" />
   <script src="js/bootstrap.bundle.min.js"></script>
 </head>
@@ -69,7 +70,8 @@
             <div class="col-lg-4 col-md-4 col-sm-4">
               <h5 style="color: black;font-size:17px">DIỄN VIÊN:</h5>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="font-size: 17px;">Taissa Farmiga, Bonnie Aarons, Storm Reid, Jonas Bloquet, Anna Popplewell</div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="font-size: 17px;">Taissa Farmiga, Bonnie Aarons,
+              Storm Reid, Jonas Bloquet, Anna Popplewell</div>
           </div>
           <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4">
@@ -105,50 +107,146 @@
     <div class="container mt-3">
       <ul class="nav nav-tabs">
         <li class="nav-item">
-          <h3><a class="nav-link day active" id="ngay1">25/09-T2</a></h3>
+          <h3><a style="margin-right:10px;" class="nav-link day active" id="ngay1">25/09-T2</a></h3>
         </li>
         <li class="nav-item">
-          <h3><a class="nav-link day" id="ngay2">26/09-T3</a></h3>
+          <h3><a style="margin-right:10px;" class="nav-link day" id="ngay2">26/09-T3</a></h3>
         </li>
         <li class="nav-item">
-          <h3><a class="nav-link day" id="ngay3">27/09-T4</a></h3>
+          <h3><a style="margin-right:10px;" class="nav-link day" id="ngay3">27/09-T4</a></h3>
         </li>
         <li class="nav-item">
-          <h3><a class="nav-link day" id="ngay4">28/09-T5</a></h3>
+          <h3><a style="margin-right:10px;" class="nav-link day" id="ngay4">28/09-T5</a></h3>
         </li>
       </ul>
     </div>
     <!--Gio chieu-->
-    <div class="container mt-3" id="gio1">
+    <div class="container mt-3 gio" id="gio1">
       <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>09:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>13:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>17:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>23:00</h4></div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>09:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>13:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>17:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>23:00</h4>
+        </div>
       </div>
     </div>
-    <div class="container mt-3" id="gio2" style="display: none;">
+    <div class="container mt-3 gio" id="gio2" style="display: none;">
       <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>10:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>14:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>18:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>21:00</h4></div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>10:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>14:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>18:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>21:00</h4>
+        </div>
       </div>
     </div>
-    <div class="container mt-3" id="gio3" style="display: none;">
+    <div class="container mt-3 gio" id="gio3" style="display: none;">
       <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>08:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>11:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>15:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>20:00</h4></div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>08:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>11:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>15:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>20:00</h4>
+        </div>
       </div>
     </div>
-    <div class="container mt-3" id="gio4" style="display: none;">
+    <div class="container mt-3 gio" id="gio4" style="display: none;">
       <div class="row">
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>11:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>13:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>19:00</h4></div>
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(198, 194, 194);color:black;"><h4>23:00</h4></div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>11:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>13:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>19:00</h4>
+        </div>
+        <div type="button" class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" data-bs-toggle="modal"
+          data-bs-target="#myModal" style="background-color: rgb(198, 194, 194);color:black;">
+          <h4>23:00</h4>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" style="color: black;">BẠN ĐANG ĐẶT VÉ XEM PHIM</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <h2 class="text-center" style="color:blue">Ác quỷ ma sơ II</h2>
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th class="text-center" style="width: 30%;">
+                    <h4>Ngày chiếu</h4>
+                  </th>
+                  <th class="text-center" style="width: 30%;">
+                    <h4>Giờ chiếu</h4>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">
+                    <h4><b>25/09/2023</b></h4>
+                  </td>
+                  <td class="text-center">
+                    <h4><b>9:00</b></h4>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer justify-content-center">
+            <a href="ticket.html"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Xác nhận</button></a>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -158,7 +256,8 @@
   <div class="row bg-secondary" style="margin-bottom:20px">
     <div class="col-md-9" style="margin-left: 12.5%; margin-bottom:35px;">
       <h2 class="text-center" style="color: white; text-decoration:underline;margin:20px 0px;">TRAILER</h2>
-      <iframe style="width:100%; height: 70vh;" src="https://www.youtube.com/embed/otM2V_g8Kqo?rel=0&showinfo=0&autoplay=1" allowfullscreen></iframe>
+      <iframe style="width:100%; height: 70vh;"
+        src="https://www.youtube.com/embed/otM2V_g8Kqo?rel=0&showinfo=0&autoplay=1" allowfullscreen></iframe>
     </div>
   </div>
   <hr>

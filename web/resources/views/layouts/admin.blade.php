@@ -13,6 +13,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="{{ asset('Fe/css/tiny-slider.css') }}" rel="stylesheet" />
     <link href="{{ asset('Fe/css/style.css') }}" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="{{ asset('Fe/images/cinema.png') }}" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   @yield('title')
 
@@ -31,5 +36,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('Fe/js/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('Fe/js/bootstrap.bundle.min.js') }}"></script>
+<script> window.myConfig = {
+  baseURL: "{{ asset('') }}"
+}; </script>
 </body>
 </html>

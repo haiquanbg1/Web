@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Oct 02, 2023 at 03:11 PM
+-- Generation Time: Oct 03, 2023 at 10:47 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -653,7 +653,8 @@ INSERT INTO `lich_chieus` (`Ma_lich_chieu`, `Ma_phim`, `Ma_phong`, `Ngay_chieu`,
 (12, 12, 3, '2023-10-08', '08:00:00', '2023-10-02 06:35:32', '2023-10-02 06:35:32', b'1'),
 (13, 12, 1, '2023-10-06', '18:00:00', '2023-10-02 07:12:36', '2023-10-02 07:12:36', b'1'),
 (14, 12, 2, '2023-10-06', '20:00:00', '2023-10-02 07:12:59', '2023-10-02 07:12:59', b'1'),
-(15, 12, 1, '2023-10-06', '22:10:00', '2023-10-02 07:13:25', '2023-10-02 07:13:25', b'1');
+(15, 12, 1, '2023-10-06', '22:10:00', '2023-10-02 07:13:25', '2023-10-02 07:13:25', b'1'),
+(16, 12, 4, '2023-10-12', '18:20:00', '2023-10-03 08:44:55', '2023-10-03 08:44:55', b'1');
 
 -- --------------------------------------------------------
 
@@ -898,7 +899,7 @@ ALTER TABLE `hoa_dons`
 -- AUTO_INCREMENT for table `lich_chieus`
 --
 ALTER TABLE `lich_chieus`
-  MODIFY `Ma_lich_chieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Ma_lich_chieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `migrations`

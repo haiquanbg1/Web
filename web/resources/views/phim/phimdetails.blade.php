@@ -84,9 +84,11 @@
     <div class="container mt-3" id=<?php echo "gio" . $i; ?> style="display: none;">
       <div class="row">
         @foreach($dataDay as $dataTime)
-        <div class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" style="background-color: rgb(171, 165, 147);color: rgb(168, 141, 50); display:flex; justify-content:center; align-items:center; width:150px; border-radius:5px; cursor:pointer;">
-          <h4 class="pt-2"><?php $s = $dataTime->Gio_chieu; echo substr_replace($s,"",strlen($s)-3); ?></h4>
-        </div>
+        <a href="{{ route('phim.datve', ['Ma_phim' => $dataTime->Ma_phim, 'Ma_lich_chieu' => $dataTime->Ma_lich_chieu]) }}" 
+          class="col-lg-2 col-md-2 col-sm-2 text-center me-2 ms-2" 
+          style="background-color: rgb(171, 165, 147);color: rgb(168, 141, 50);text-decoration :none; display:flex; justify-content:center; align-items:center; width:150px; border-radius:5px; cursor:pointer;">
+            <h4 class="pt-2"><?php $s = $dataTime->Gio_chieu; echo substr_replace($s,"",strlen($s)-3); ?></h4>
+        </a>
         @endforeach
       </div>
     </div>

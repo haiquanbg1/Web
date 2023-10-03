@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ChiTietPhim;
 use App\Models\DanhSachPhim;
 use App\Models\LichChieu;
+use App\Models\Ghe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -14,12 +15,14 @@ class PhimController extends Controller
     private $chitietphim;
     private $lichchieu;
     private $Now;
+    private $ghe;
 
-    public function __construct(DanhSachPhim $danhsachphim, ChiTietPhim $chitietphim, LichChieu $lichchieu)
+    public function __construct(DanhSachPhim $danhsachphim, ChiTietPhim $chitietphim, LichChieu $lichchieu, Ghe $ghe)
     {
         $this->danhsachphim = $danhsachphim;
         $this->chitietphim = $chitietphim;
         $this->lichchieu = $lichchieu;
+        $this->ghe = $ghe;
         $this->Now = Carbon::now('Asia/Ho_Chi_Minh');
     }
 
@@ -54,5 +57,14 @@ class PhimController extends Controller
         if($Date < $DataDS->Ngay_khoi_chieu)
             $Date = new Carbon($DataDS->Ngay_khoi_chieu);
         return view('phim.phimdetails', compact('DataDS', 'DataCT', 'LC', 'Date'));
+    }
+
+    public function datve($Ma_phim, $Ma_lich_chieu)
+    {
+        $DataDS = $this->danhsachphim->find($Ma_phim);
+        $DataCT = $this->chitietphim->find($Ma_phim);
+        $LC = $this->lichchieu->find($Ma_lich_chieu);
+        $DataGhe = $this->ghe->all()->where('Ma_phong', '=', $LC->Ma_phong);
+        return view('phim.datve', compact('DataDS', 'DataCT', 'LC', 'DataGhe'));
     }
 }

@@ -52,6 +52,10 @@ Route::prefix('phim')->group(function() {
         'as' => 'details',
         'uses' => 'App\Http\Controllers\PhimController@detail'
     ]);
+    Route::get('/datve/{Ma_phim}/{Ma_lich_chieu}', [
+        'as' => 'phim.datve',
+        'uses' => 'App\Http\Controllers\PhimController@datve'
+    ]);
 });
 
 route::get('admin/user/login',[LoginController::class,'index'])->name('login');
