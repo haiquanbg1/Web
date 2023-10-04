@@ -29,6 +29,7 @@ Route::prefix('home')->group(function (){
         'as' => 'home.index',
         'uses' => 'App\Http\Controllers\HomeController@home'
     ])->middleware(['auth']);
+    route::get('/logout',[HomeController::class,'logout'])->name('logout');
 });
 
 // route::middleware(['auth']) ->group(function(){
@@ -58,9 +59,9 @@ Route::prefix('phim')->group(function() {
     ]);
 });
 
-route::get('admin/user/login',[LoginController::class,'index'])->name('login');
+route::get('/login',[LoginController::class,'index'])->name('login');
 
-route::post('admin/user/login/store',[LoginController::class,'store']);
+route::post('/login/store',[LoginController::class,'store']);
 
 Route::prefix('register')->group(function (){
     route::get('/',[RegisterController::class,'register']) -> name('register');

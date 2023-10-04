@@ -20,7 +20,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
       @include('admin.alert')
-      <form action="/admin/user/login/store" method="post">
+      <form action="/login/store" method="post">
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
