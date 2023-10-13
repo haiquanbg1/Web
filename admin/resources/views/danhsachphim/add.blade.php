@@ -16,7 +16,7 @@
     <div class="content">
         <div class="container-fluid">
             <form action="{{ route('danhsachphim.store') }}" method="post" enctype="multipart-form-data">
-                @csrf
+            {{ csrf_field() }}
                 <div class="row">
                     <div class="mb-5 ml-1 mr-1 col-4">
                         <!-- <div class="mb-3"> -->
@@ -79,9 +79,6 @@
                                 placeholder="Nhập link ảnh"></input>
                         </div> -->
                 </div>
-
-
-
                 <button type="submit" class="btn btn-primary">Thêm</button>
                 <label class="form_label ml-3" style="color:red">*(Lưu ý: Mọi thông tin phải được nhập đầy đủ)</label>
             </form>

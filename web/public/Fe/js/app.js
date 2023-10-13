@@ -1,3 +1,4 @@
+
 var productSection = document.querySelector("#phimdangchieu");
 var productSectionSapChieu = document.querySelector("#phimsapchieu");
 var productSectionDacBiet = document.querySelector("#phimdacbiet");
@@ -108,7 +109,7 @@ days.forEach(days => {
                 ngay7.setAttribute("class", "nav-link");
                 break;
             case 'ngay5':
-                giongay4.setAttribute("style","display:block;");
+                giongay5.setAttribute("style","display:block;");
                 ngay5.setAttribute("class", "nav-link active");
                 ngay2.setAttribute("class", "nav-link");
                 ngay3.setAttribute("class", "nav-link");
@@ -140,61 +141,6 @@ days.forEach(days => {
             default:
                 break;
         }
-    });
-});
-
-function asset(path){
-    return window.myConfig.baseURL + path;
-}
-
-var money = 0;
-var seats = [];
-var totalMoney = document.getElementById("totalMoney");
-var image = document.querySelectorAll(".myImage");
-image.forEach(image=>{
-    image.addEventListener("click", function() {
-        if (image.children[0].getAttribute("src") === asset('Fe/images/seat-unselect-normal.png')) {
-            image.children[0].setAttribute("src", asset('Fe/images/seat-select-normal.png'));
-            money += 50000;
-        } else {
-            image.children[0].setAttribute("src", asset('Fe/images/seat-unselect-normal.png'));
-            money -= 50000;
-        }
-        console.log(money);
-        totalMoney.innerHTML = money + " vnd ";
-    });
-});
-
-
-
-
-var imageVip = document.querySelectorAll(".myImageVip");
-imageVip.forEach(imageVip=>{
-    imageVip.addEventListener("click", function() {
-        if (imageVip.children[0].getAttribute("src") === asset('Fe/images/vip.png')) {
-            imageVip.children[0].setAttribute("src", asset('Fe/images/seat-select-vip.png'));
-            money += 55000;
-        } else {
-            imageVip.children[0].setAttribute("src", asset('Fe/images/vip.png'));
-            money -= 55000;
-        }
-        console.log(money);
-        totalMoney.innerHTML = money + " vnd ";
-    });
-});
-
-var imageDouble = document.querySelectorAll(".myImageDouble");
-imageDouble.forEach(imageDouble=>{
-    imageDouble.addEventListener("click", function() {
-        if (imageDouble.children[0].getAttribute("src") === asset('Fe/images/seat-unselect-double.png')) {
-            imageDouble.children[0].setAttribute("src", asset('Fe/images/seat-select-double.png'));
-            money += 110000;
-        } else {
-            imageDouble.children[0].setAttribute("src", asset('Fe/images/seat-unselect-double.png'));
-            money -= 110000;
-        }
-        console.log(money);
-        totalMoney.innerHTML = money + " vnd ";
     });
 });
 

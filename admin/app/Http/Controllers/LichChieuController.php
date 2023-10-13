@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\DanhSachPhim;
-use  App\Models\LichChieu;
+use App\Models\LichChieu;
+use App\Models\Ghe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 
@@ -31,16 +32,14 @@ class LichChieuController extends Controller
         foreach($DataLichChieu as $data)
         {
             if($data->Ngay_chieu < $Now->toDateString())
-                $this->lichchieu->find($data->Ma_lich_chieu)->update([
-                    'Trang_thai' => 0
-                ]);
+                $this->delete($data->Ma_lich_chieu);
             else if($data->Ngay_chieu == $Now->toDateString())
                 if($data->Gio_chieu < $Now->toTimeString())
-                    $this->lichchieu->find($data->Ma_lich_chieu)->update([
-                        'Trang_thai' => 0
-                    ]);
+                    $this->delete($data->Ma_lich_chieu);
+            if($DataPhim->find($data->Ma_phim)->Trang_thai == 0)
+                $this->delete($data->Ma_lich_chieu);
         }
-        $DataLichChieu = $this->lichchieu->where('Trang_thai', '=', 1)->orderBy('Ma_phim')->paginate(5);
+        $DataLichChieu = $this->lichchieu->where('Trang_thai', '=', 1)->paginate(5);
         return view('lichchieu.index', compact('DataLichChieu', 'DataPhim'));
     }
 
@@ -57,9 +56,18 @@ class LichChieuController extends Controller
     
     public function delete($Ma_lich_chieu)
     {
-        $this->lichchieu->find($Ma_lich_chieu)->update([
+        $data = $this->lichchieu->find($Ma_lich_chieu);
+        $dataGhe = Ghe::all()->where('Ma_phong' , '=', $data->Ma_phong);
+
+        $data->update([
             'Trang_thai' => 0
         ]);
+        foreach($dataGhe as $ghe)
+        {
+            $ghe->update([
+                'Trang_thai' => 0
+            ]);
+        }
         return redirect()->route('lichchieu.index');
     }
 }

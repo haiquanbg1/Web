@@ -28,8 +28,8 @@ Route::prefix('home')->group(function (){
     Route::get('/', [
         'as' => 'home.index',
         'uses' => 'App\Http\Controllers\HomeController@home'
-    ])->middleware(['auth']);
-    route::get('/logout',[HomeController::class,'logout'])->name('logout');
+    ]);
+    Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 });
 
 // route::middleware(['auth']) ->group(function(){
@@ -57,7 +57,24 @@ Route::prefix('phim')->group(function() {
         'as' => 'phim.datve',
         'uses' => 'App\Http\Controllers\PhimController@datve'
     ]);
+    
+    Route::get('/xacnhan', [
+        'as' => 'phim.xacnhan',
+        'uses' => 'App\Http\Controllers\PhimController@xacnhan'
+    ]);
 });
+
+Route::prefix('ghe')->group(function() {
+    Route::post('them/{Ma_ghe}/{Ma_lich_chieu}', [
+        'as' => 'themghe',
+        'uses' => 'App\Http\Controllers\GheController@them'
+    ]);
+    Route::post('xoa/{Ma_ghe}/{Ma_lich_chieu}', [
+        'as' => 'xoaghe',
+        'uses' => 'App\Http\Controllers\GheController@xoa'
+    ]);
+});
+
 
 route::get('/login',[LoginController::class,'index'])->name('login');
 

@@ -30,6 +30,7 @@ class HomeController extends Controller
         $dataSlider = $this->slider->all();
         return view('home', compact('dataSlider', 'dataDS', 'dataCT', 'count'));
     }
+
     public function logout()
     {
         Auth::logout();
