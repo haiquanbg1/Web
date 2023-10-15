@@ -58,9 +58,9 @@ Route::prefix('phim')->group(function() {
         'uses' => 'App\Http\Controllers\PhimController@datve'
     ]);
     
-    Route::get('/xacnhan', [
-        'as' => 'phim.xacnhan',
-        'uses' => 'App\Http\Controllers\PhimController@xacnhan'
+    Route::get('/xacnhan/{Ma_lich_chieu}', [
+        'as' => 'ghe.xacnhan',
+        'uses' => 'App\Http\Controllers\GheController@xacnhan'
     ]);
 });
 

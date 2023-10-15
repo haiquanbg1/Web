@@ -8,6 +8,8 @@ use App\Models\LichChieu;
 use App\Models\Ghe;
 use Carbon\Carbon;
 use App\Models\Ve;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Request as FacadesRequest;
@@ -66,18 +68,12 @@ class PhimController extends Controller
 
     public function datve($Ma_phim, $Ma_lich_chieu)
     {
+        $user = Auth::user()->id;
+        $ve = Ve::all();
         $DataDS = $this->danhsachphim->find($Ma_phim);
         $DataCT = $this->chitietphim->find($Ma_phim);
         $LC = $this->lichchieu->find($Ma_lich_chieu);
         $DataGhe = $this->ghe->all()->where('Ma_phong', '=', $LC->Ma_phong);
-        return view('phim.datve', compact('DataDS', 'DataCT', 'LC', 'DataGhe'));
-    }
-
-    public function xacnhan(Request $request)
-    {
-        // $demo = $request->cookie();
-        // foreach($demo as $a) {
-        //     echo $a . "\n";
-        // }
+        return view('phim.datve', compact('DataDS', 'DataCT', 'LC', 'DataGhe', 'user', 've'));
     }
 }
