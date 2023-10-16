@@ -2,18 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\ChiTietPhim;
+use App\Models\DanhSachPhim;
+use App\Models\LichChieu;
 use App\Models\Ghe;
 use App\Models\Ve;
 use Illuminate\Support\Facades\Auth;
 
 class GheController extends Controller
 {
+    private $danhsachphim;
+    private $chitietphim;
+    private $lichchieu;
     private $ghe;
     private $ve;
 
-    public function __construct(Ghe $ghe, Ve $ve)
+    public function __construct(DanhSachPhim $danhsachphim, ChiTietPhim $chitietphim, LichChieu $lichchieu, Ghe $ghe, Ve $ve)
     {
+        $this->danhsachphim = $danhsachphim;
+        $this->chitietphim = $chitietphim;
+        $this->lichchieu = $lichchieu;
         $this->ghe = $ghe;
         $this->ve = $ve;
     }
@@ -49,10 +57,15 @@ class GheController extends Controller
             return redirect()->back();
     }
 
-    public function xacnhan($Ma_lich_chieu)
+    public function xacnhan($Ma_phim, $Ma_lich_chieu)
     {
-        $user = Auth::user()->id;
-        $data = Ve::where('Ma_khach_hang', '=', $user)->where('Ma_lich_chieu', '=', $Ma_lich_chieu)->get();
-        return view('phim.hoadon', compact('data'));
+        $user = Auth::user();
+        
+        $DataDS = $this->danhsachphim->find($Ma_phim);
+        $DataCT = $this->chitietphim->find($Ma_phim);
+        $LC = $this->lichchieu->find($Ma_lich_chieu);
+        $DataGhe = $this->ghe->all()->where('Ma_phong', '=', $LC->Ma_phong);
+        $data = Ve::where('Ma_khach_hang', '=', $user->id)->where('Ma_lich_chieu', '=', $Ma_lich_chieu)->get();
+        return view('phim.hoadon', compact('DataDS', 'DataCT', 'LC', 'DataGhe', 'user', 'data'));
     }
 }

@@ -21,16 +21,14 @@ class PhimController extends Controller
     private $lichchieu;
     private $Now;
     private $ghe;
-    private $ve;
 
-    public function __construct(DanhSachPhim $danhsachphim, ChiTietPhim $chitietphim, LichChieu $lichchieu, Ghe $ghe, Ve $ve)
+    public function __construct(DanhSachPhim $danhsachphim, ChiTietPhim $chitietphim, LichChieu $lichchieu, Ghe $ghe)
     {
         $this->danhsachphim = $danhsachphim;
         $this->chitietphim = $chitietphim;
         $this->lichchieu = $lichchieu;
         $this->ghe = $ghe;
         $this->Now = Carbon::now('Asia/Ho_Chi_Minh');
-        $this->ve = $ve;
     }
 
     public function dangchieu()
@@ -68,12 +66,19 @@ class PhimController extends Controller
 
     public function datve($Ma_phim, $Ma_lich_chieu)
     {
-        $user = Auth::user()->id;
-        $ve = Ve::all();
-        $DataDS = $this->danhsachphim->find($Ma_phim);
-        $DataCT = $this->chitietphim->find($Ma_phim);
-        $LC = $this->lichchieu->find($Ma_lich_chieu);
-        $DataGhe = $this->ghe->all()->where('Ma_phong', '=', $LC->Ma_phong);
-        return view('phim.datve', compact('DataDS', 'DataCT', 'LC', 'DataGhe', 'user', 've'));
+        if(Auth::check())
+        {
+            $user = Auth::user()->id;
+            $ve = Ve::all();
+            $DataDS = $this->danhsachphim->find($Ma_phim);
+            $DataCT = $this->chitietphim->find($Ma_phim);
+            $LC = $this->lichchieu->find($Ma_lich_chieu);
+            $DataGhe = $this->ghe->all()->where('Ma_phong', '=', $LC->Ma_phong);
+            return view('phim.datve', compact('DataDS', 'DataCT', 'LC', 'DataGhe', 'user', 've'));
+        }
+        else
+        {
+            return redirect()->route('login');
+        }
     }
 }
