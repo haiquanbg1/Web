@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Phim</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link href="css/tiny-slider.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="images/cinema.png" />
+  <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <!--navbar control-->
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Cinema navigation bar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/cinema.png" alt="Logo" style="width: 40px" class="rounded-pill" />
+      </a>
+      <a class="navbar-brand" href="index.html">
+        <h4>Royal Cinema</h4>
+      </a>
+
+      <div class="collapse navbar-collapse" id="navBarsCinema">
+        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="film.html">Phim</a>
+          </li>
+          <li><a class="nav-link" href="schedule.html">Lịch chiếu</a></li>
+          <li><a class="nav-link" href="ticket.html">Giá vé</a></li>
+          <li><a class="nav-link" href="news.html">Tin tức và ưu đãi</a></li>
+          <li><a class="nav-link" href="login.html">Đăng nhập</a></li>
+        </ul>
+        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+          <li>
+            <a class="nav-link" href="cart.html"><img src="images/cart.svg" alt="cart" /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div style="text-align: center; margin:50px;">
+            <h3 style="color: black; background-color:#fdffc4">BOOKING ONLINE</h3>
+            <ul style="background-color:seashell;">
+                <li style="display:flex;">
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                        <h5> &nbsp;&nbsp;Tên:</h5>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-xs-12">
+                        <h5>Đoàn Trung Hiếu</h5>
+                      </div>
+                </li>
+                <li style="display:flex;">
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                        <h5> &nbsp;&nbsp;Số điện thoại:</h5>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-xs-12">
+                        <h5>0374106611</h5>
+                      </div>
+                </li>
+                <li style="display:flex;">
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                        <h5> &nbsp;&nbsp;Mã hóa đơn:</h5>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-xs-12">
+                        <h5>123</h5>
+                      </div>
+                </li>
+                <li style="display:flex;">
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                        <h5> &nbsp;&nbsp;Rạp:</h5>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-xs-12">
+                        <h5>Royal Cinema</h5>
+                      </div>
+                </li>
+                <li style="border-color: red; display:flex;">
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                        <h5> &nbsp;&nbsp;Giờ chiếu:</h5>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-xs-12">
+                        <h5>09:00</h5>
+                      </div>
+                </li>
+                <li style="display:flex;">
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                        <h5> &nbsp;&nbsp;Phòng:</h5>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-xs-12">
+                        <h5>1</h5>
+                      </div>
+                </li>
+                <li style="display:flex;">
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                        <h5> &nbsp;&nbsp;Ghế:</h5>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-xs-12">
+                        <h5>A1, A2</h5>
+                      </div>
+                </li>
+            </ul>
+            <div style="align-items: center; text-align:center">
+                <button style="border-color:gray;">Thanh toán</button>
+            </div>
+        </div>
+      </div>
+
+      <!--THong tin phim-->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="margin:35px 0px">
+        <div style="margin: 0px 10px 10px 0px; display:flex;">
+          <div class="col-lg-6 col-md-6 col-sm-12" style="margin: 0px 10px 10px 0px;">
+            <img class="img-responsive" src="images/the_nun_film.jpg">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <h4><b style="font-size: 25px;">Ác quỷ ma sơ II</b></h4>
+            <h4>Phim 2D</h4>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin:10px 0px;">
+          <ul style="padding: 10px 30px 10px 30px; list-style:none;">
+            <li style="padding: 10px 0px; display:flex;">
+              <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                <i style="font-size: 23px;" class="fa fa-tags"></i>
+                <h5> &nbsp;&nbsp;Thể loại:</h5>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <h5>Kinh dị, hồi hộp</h5>
+              </div>
+            </li>
+            <li style="padding: 10px 0px; display:flex;">
+              <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                <i style="font-size: 23px;" class="fa fa-clock"></i>
+                <h5> &nbsp;&nbsp;Thời lượng:</h5>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <h5>110 phút</h5>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin:10px 0px;">
+          <hr style="border-style: dash; border-top-width:2px; margin:5px 0px;">
+          <ul style="padding: 10px 30px 10px 30px; list-style:none;">
+            <li style="padding: 10px 0px; display:flex;">
+              <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                <i style="font-size: 23px;" class="fa fa-calendar"></i>
+                <h5> &nbsp;&nbsp;Ngày chiếu:</h5>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <h5>25/09/2023</h5>
+              </div>
+            </li>
+            <li style="padding: 10px 0px; display:flex;">
+              <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                <i style="font-size: 23px;" class="fa fa-clock"></i>
+                <h5> &nbsp;&nbsp;Giờ chiếu:</h5>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <h5>09:00</h5>
+              </div>
+            </li>
+            <li style="padding: 10px 0px; display:flex;">
+              <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                <i style="font-size: 23px;" class="fa fa-desktop"></i>
+                <h5> &nbsp;&nbsp;Phòng:</h5>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <h5>P1</h5>
+              </div>
+            </li>
+            <li style="padding: 10px 0px; display:flex;">
+              <div class="col-lg-6 col-md-6 col-xs-12" style="display: flex;">
+                <i style="font-size: 23px;" class="fa fa-cubes"></i>
+                <h5> &nbsp;&nbsp;Ghế:</h5>
+              </div>
+              <div class="col-lg-6 col-md-6 col-xs-12">
+                <h5 id = "seats"></h5>
+              </div>
+            </li>
+          </ul>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+
+
+
+
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Start Column 1 -->
+        <div class="col-md-12 col-lg-4 mb-5 mb-lg-0">
+          <h2 class="mb-4 section-title">Cụm rạp Royal</h2>
+          <ul class="list-unstyled" style="float: left">
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Bắc Từ Liêm - Hotline: 0123456789</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Cầu Giấy - Hotline: 0987654321</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Name Từ Liêm - Hotline: 0374106611</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Ba Đình - Hotline: 0123456782</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Hai Bà Trưng - Hotline: 0123456783</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Bắc Giang - Hotline: 0123456784</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Bắc Ninh - Hotline: 0123456785</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Nam Định - Hotline: 0123456712</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Vĩnh Phúc - Hotline: 0123456734</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Phú Thọ - Hotline: 0123456776</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Lạng Sơn - Hotline: 0123456754</span>
+            </li>
+            <li>
+              <i class="fa fa-angle-right"></i>
+              <span>Royal Hưng Yên - Hotline: 0123456325</span>
+            </li>
+          </ul>
+        </div>
+        <!-- End Column 1 -->
+
+        <!-- Start Column 2 -->
+        <div class="col-12 col-md-4 col-lg-4 mb-5 mb-md-0">
+          <h2 class="mb-4 section-title">Kết nối với chúng tôi</h2>
+          <a href="https://www.facebook.com/hieudoan1234"><img src="images/facebook.png" alt="facebook"
+              class="rounded-circle" style="width: 30px; height: 30px; margin: 10px" /></a>
+          <a href="https://www.instagram.com/hieudoan1110/"><img src="images/ins.jpg" alt="instagram"
+              class="rounded-circle" style="width: 30px; height: 30px; margin: 10px" /></a>
+          <a href="https://www.tiktok.com/@hieudoan1110?lang=vi-VN"><img src="images/tiktok.jpg" alt="tiktok"
+              class="rounded-circle" style="width: 30px; height: 30px; margin: 10px" /></a>
+          <br />
+          <img src="images/boy.png" alt="cinema" style="width: 150px" />
+          <img src="images/girl.png" alt="cinema" style="width: 150px" />
+        </div>
+        <!-- End Column 2 -->
+
+        <!-- Start Column 3 -->
+        <div class="col-12 col-md-4 col-lg-4 mb-5 mb-md-0">
+          <h2 class="mb-4 section-title">Chăm sóc khách hàng</h2>
+          <div>Hotline: 1900 6017</div>
+          <div>
+            Giờ làm việc: 8:00 - 22:00 (Tất cả các ngày bao gồm cả Lễ Tết)
+          </div>
+          <div>CÔNG TY CỔ PHẦN ROYAL MEDIA</div>
+        </div>
+        <!-- End Column 3 -->
+      </div>
+    </div>
+  </div>
+  <!-- End Product Section -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>
