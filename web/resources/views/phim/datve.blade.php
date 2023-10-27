@@ -58,16 +58,10 @@
         }
         ?>
 
-        @for($i = $count; $i <= $count+9; $i++ ) @if($GheThuong[$i]->Trang_thai == 0)
-          <form method="post" action="{{ route('themghe', ['Ma_ghe' => $GheThuong[$i]->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
-            {{ csrf_field() }}
-            <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImage">
-              <img class="seat-cell" src="{{ asset('Fe/images/seat-unselect-normal.png') }}" alt="Description of the image">
-              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $GheThuong[$i]->Ten_ghe ?>
-              </div>
-            </button>
-          </form>
-          @elseif($GheThuong[$i]->Trang_thai == 1)
+        @for($i = $count; $i <= $count+9; $i++ )
+        <?php $dataGheThuong = $ve->where('Ma_lich_chieu', '=', $LC->Ma_lich_chieu)->where('Ma_ghe', '=', $GheThuong[$i]->Ma_ghe);?>
+          @foreach($dataGheThuong as $dataThuong)
+          @if($dataThuong->Trang_thai == 1)
           <form method="post" action="{{ route('xoaghe', ['Ma_ghe' => $GheThuong[$i]->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
             {{ csrf_field() }}
             <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImage">
@@ -76,13 +70,23 @@
               </div>
             </button>
           </form>
-          @else
-          <div style="margin:10px; position:relative;">
-            <img class="seat-cell" src="{{ asset('Fe/images/seat--normal.png') }}" alt="Description of the image">
+          @elseif($dataThuong->Trang_thai == 2)
+          <button type="submit" style="margin:10px; position:relative; border: none; background:none;" class="myImage">
+            <img class="seat-cell" src="{{ asset('Fe/images/seat-buy-normal.png') }}" alt="Description of the image">
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $GheThuong[$i]->Ten_ghe ?>
             </div>
-          </div>
+          </button>
+          @else
+          <form method="post" action="{{ route('themghe', ['Ma_ghe' => $GheThuong[$i]->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
+            {{ csrf_field() }}
+            <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImage">
+              <img class="seat-cell" src="{{ asset('Fe/images/seat-unselect-normal.png') }}" alt="Description of the image">
+              <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $GheThuong[$i]->Ten_ghe ?>
+              </div>
+            </button>
+          </form>
           @endif
+          @endforeach
           @endfor
       </div>
       @endfor
@@ -102,16 +106,10 @@
     }
     ?>
 
-    @for($i = $count; $i <= $count+9; $i++ ) @if($GheVip[$i]->Trang_thai == 0)
-      <form method="post" action="{{ route('themghe', ['Ma_ghe' => $GheVip[$i]->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
-        {{ csrf_field() }}
-        <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImageVip">
-          <img class="seat-cell" src="{{ asset('Fe/images/vip.png') }}" alt="Description of the image">
-          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $GheVip[$i]->Ten_ghe ?>
-          </div>
-        </button>
-      </form>
-      @elseif($GheVip[$i]->Trang_thai == 1)
+    @for($i = $count; $i <= $count+9; $i++ ) 
+    <?php $dataGheVip = $ve->where('Ma_lich_chieu', '=', $LC->Ma_lich_chieu)->where('Ma_ghe', '=', $GheVip[$i]->Ma_ghe); ?>
+        @foreach($dataGheVip as $dataVip)
+        @if($dataVip->Trang_thai == 1)
       <form method="post" action="{{ route('xoaghe', ['Ma_ghe' => $GheVip[$i]->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
         {{ csrf_field() }}
         <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImageVip">
@@ -120,13 +118,23 @@
           </div>
         </button>
       </form>
-      @else
-      <div style="margin:10px; position:relative;">
-        <img class="seat-cell" src="{{ asset('Fe/images/seat--normal.png') }}" alt="Description of the image">
+      @elseif($dataVip->Trang_thai == 2)
+      <button type="submit" style="margin:10px; position:relative; border: none; background:none;" class="myImageVip">
+        <img class="seat-cell" src="{{ asset('Fe/images/seat-buy-vip.png') }}" alt="Description of the image">
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $GheVip[$i]->Ten_ghe ?>
         </div>
-      </div>
+      </button>
+      @else
+      <form method="post" action="{{ route('themghe', ['Ma_ghe' => $GheVip[$i]->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
+        {{ csrf_field() }}
+        <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImageVip">
+          <img class="seat-cell" src="{{ asset('Fe/images/vip.png') }}" alt="Description of the image">
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $GheVip[$i]->Ten_ghe ?>
+          </div>
+        </button>
+      </form>
       @endif
+      @endforeach
       @endfor
   </div>
   @endfor
@@ -139,16 +147,9 @@
   @endfor
   <?php $GheDoi = $DataGhe->where('Loai_ghe', '=', "Ghế đôi") ?>
   @foreach($GheDoi as $data)
-  @if($data->Trang_thai == 0)
-  <form method="post" action="{{ route('themghe', ['Ma_ghe' => $data->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
-    {{ csrf_field() }}
-    <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImageDouble">
-      <img class="double-seat" src="{{ asset('Fe/images/seat-unselect-double.png') }}" alt="Description of the image">
-      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $data->Ten_ghe ?>
-      </div>
-    </button>
-  </form>
-  @elseif($data->Trang_thai == 1)
+  <?php $dataGheDoi = $ve->where('Ma_lich_chieu', '=', $LC->Ma_lich_chieu)->where('Ma_ghe', '=', $data->Ma_ghe); ?>
+  @foreach($dataGheDoi as $dataDoi)
+  @if($dataDoi->Trang_thai == 1)
   <form method="post" action="{{ route('xoaghe', ['Ma_ghe' => $data->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
     {{ csrf_field() }}
     <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImageDouble">
@@ -157,13 +158,24 @@
       </div>
     </button>
   </form>
-  @else
-  <div style="margin:10px; position:relative;">
-    <img class="double-seat" src="{{ asset('Fe/images/seat--normal.png') }}" alt="Description of the image">
+  @elseif($dataDoi->Trang_thai == 2)
+  <button type="submit" style="margin:10px; position:relative; border: none; background:none;" class="myImageDouble">
+    <img class="double-seat" src="{{ asset('Fe/images/seat-buy-double.png') }}" alt="Description of the image">
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $data->Ten_ghe ?>
     </div>
-  </div>
+  </button>
+  @else
+  <?php echo $dataDoi->Trang_thai; ?>
+  <form method="post" action="{{ route('themghe', ['Ma_ghe' => $data->Ma_ghe, 'Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}">
+    {{ csrf_field() }}
+    <button type="submit" style="margin:10px; position:relative; cursor:pointer; border: none; background:none;" class="myImageDouble">
+      <img class="double-seat" src="{{ asset('Fe/images/seat-unselect-double.png') }}" alt="Description of the image">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:black"><?php echo $data->Ten_ghe ?>
+      </div>
+    </button>
+  </form>
   @endif
+  @endforeach
   @endforeach
 </div>
 </div>

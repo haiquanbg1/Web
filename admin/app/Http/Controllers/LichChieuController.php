@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\DanhSachPhim;
 use App\Models\LichChieu;
-use App\Models\Ghe;
 use Illuminate\Http\Request;
+use App\Models\Ve;
+use App\Models\Ghe;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class LichChieuController extends Controller
 {
     private $lichchieu;
+    private $ve;
 
-    public function __construct(LichChieu $lichchieu)
+    public function __construct(LichChieu $lichchieu, Ve $ve)
     {
         $this->lichchieu = $lichchieu;
+        $this->ve = $ve;
     }
 
     public function create()
@@ -45,29 +48,33 @@ class LichChieuController extends Controller
 
     public function store(Request $request)
     {
-        $this->lichchieu->create([
+        $newLC = $this->lichchieu->create([
             'Ma_phim' => $request->Ma_phim,
             'Ma_phong' => $request->Ma_phong,
             'Ngay_chieu' => $request->Ngay_chieu,
             'Gio_chieu' => $request->Gio_chieu
         ]);
+
+        $Ghe = Ghe::where('Ma_phong', '=', $request->Ma_phong)->get();
+        foreach($Ghe as $data)
+        {
+            $this->ve->create([
+                'Ma_ghe' => $data->Ma_ghe,
+                'Ma_khach_hang' => 0,
+                'Ma_lich_chieu' => $newLC->Ma_lich_chieu,
+                'Gia' => $data->Gia
+            ]);
+        }
         return redirect()->route('lichchieu.index');
     }
     
     public function delete($Ma_lich_chieu)
     {
         $data = $this->lichchieu->find($Ma_lich_chieu);
-        $dataGhe = Ghe::all()->where('Ma_phong' , '=', $data->Ma_phong);
 
         $data->update([
             'Trang_thai' => 0
         ]);
-        foreach($dataGhe as $ghe)
-        {
-            $ghe->update([
-                'Trang_thai' => 0
-            ]);
-        }
         return redirect()->route('lichchieu.index');
     }
 }

@@ -62,6 +62,10 @@ Route::prefix('phim')->group(function() {
         'as' => 'ghe.xacnhan',
         'uses' => 'App\Http\Controllers\GheController@xacnhan'
     ]);
+    Route::post('/hoadon/{Ma_lich_chieu}', [
+        'as' => 'ghe.hoadon',
+        'uses' => 'App\Http\Controllers\GheController@hoadon'
+    ]);
 });
 
 Route::prefix('ghe')->group(function() {

@@ -73,9 +73,13 @@
                         </div>
                     </li>
                 </ul>
-                <div style="align-items: center; text-align:center">
+                <form action="{{ route('ghe.hoadon', ['Ma_lich_chieu' => $LC->Ma_lich_chieu]) }}" method="post">
+                {{ csrf_field() }}
+                  <div style="align-items: center; text-align:center">
                     <button style="border-color:gray;">Thanh toán</button>
-                </div>
+                  </div>
+                </form>
+                
             </div>
         </div>
 

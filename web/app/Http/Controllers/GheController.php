@@ -30,16 +30,18 @@ class GheController extends Controller
     {
         if(Auth::check())
         {
-            $gia = $this->ghe->find($Ma_ghe)->Gia;
-            $this->ghe->find($Ma_ghe)->update([
-                'Trang_thai' => 1
+            $this->ve->where('Ma_ghe', '=', $Ma_ghe)->where('Ma_lich_chieu', '=', $Ma_lich_chieu)->update([
+                'Trang_thai' => 1,
+                'Ma_khach_hang' => Auth()->user()->id
             ]);
-            $this->ve->create([
-                'Ma_ghe' => $Ma_ghe,
-                'Ma_khach_hang' => Auth::user()->id,
-                'Ma_lich_chieu' => $Ma_lich_chieu,
-                'Gia' => $gia
-            ]);
+            // $data = $this->ve->where('Ma_ghe', '=', $Ma_ghe)->where('Ma_lich_chieu', '=', $Ma_lich_chieu);
+            // foreach($data as $update)
+            // {
+            //     $update->update([
+            //         'Trang_thai' => 0,
+            //         'Ma_khach_hang' => Auth()->user()->id
+            //     ]);
+            // }
             return redirect()->back();
         }
         else
@@ -50,11 +52,11 @@ class GheController extends Controller
 
     public function xoa($Ma_ghe, $Ma_lich_chieu)
     {
-            $this->ghe->find($Ma_ghe)->update([
-                'Trang_thai' => 0
-            ]);
-            $this->ve->where('Ma_lich_chieu', '=', $Ma_lich_chieu)->where('Ma_ghe', '=', $Ma_ghe)->delete();
-            return redirect()->back();
+        $this->ve->where('Ma_lich_chieu', '=', $Ma_lich_chieu)->where('Ma_ghe', '=', $Ma_ghe)->update([
+            'Trang_thai' => null,
+            'Ma_khach_hang' => 0
+        ]);;
+        return redirect()->back();
     }
 
     public function xacnhan($Ma_phim, $Ma_lich_chieu)
@@ -67,5 +69,14 @@ class GheController extends Controller
         $DataGhe = $this->ghe->all()->where('Ma_phong', '=', $LC->Ma_phong);
         $data = Ve::where('Ma_khach_hang', '=', $user->id)->where('Ma_lich_chieu', '=', $Ma_lich_chieu)->get();
         return view('phim.hoadon', compact('DataDS', 'DataCT', 'LC', 'DataGhe', 'user', 'data'));
+    }
+
+    public function hoadon($Ma_lich_chieu)
+    {
+        $user = Auth::user();
+        Ve::where('Ma_khach_hang', '=', $user->id)->where('Ma_lich_chieu', '=', $Ma_lich_chieu)->update([
+            'Trang_thai' => 2
+        ]);
+        return redirect()->route('home.index');
     }
 }

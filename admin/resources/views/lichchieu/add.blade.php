@@ -16,7 +16,7 @@
     <div class="content">
         <div class="container-fluid">
             <form action="{{ route('lichchieu.store') }}" method="post" enctype="multipart-form-data">
-                @csrf
+            {{ csrf_field() }}
                 <div class="row">
                     <div class="mb-5 ml-1 mr-1 col-4">
                         <!-- <div class="mb-3"> -->
