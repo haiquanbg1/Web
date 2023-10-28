@@ -964,7 +964,13 @@ textarea {
   color: #494c62;
 }
 
+.form-group {
+  margin-bottom: 15px;
+}
 
+.control-label {
+  margin-top: 1px;
+}
 
 
 
