@@ -95,6 +95,7 @@
       </div>
     </div>
   @endfor
+  <?php $Date->subDays(7); ?>
 </div>
 <!-- End Product Section -->
 
@@ -106,6 +107,18 @@
   </div>
 </div>
 <hr>
+<?php
+$Tuoi = $DataCT->Tuoi_gioi_han;
+$Date->subYears($Tuoi);
+if ($Date < $user->Ngay_sinh)
+{
+  echo '<script>alert("Bạn chưa đủ tuổi xem phim này.\nBạn chắc chắn tiếp tục chứ ?")</script>';
+}
+$Date->addYears($Tuoi);
+
+?>
+
+
 
 
 @endsection

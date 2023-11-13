@@ -21,22 +21,14 @@
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('phim.dangchieu') }}">Phim</a>
             </li>
-            <li><a class="nav-link" href="{{ asset('Fe/schedule.html') }}">Lịch chiếu</a></li>
-            <li><a class="nav-link" href="{{ asset('Fe/ticket.html') }}">Giá vé</a></li>
-            <li><a class="nav-link" href="{{ asset('Fe/news.html') }}">Tin tức và ưu đãi</a></li>
+            <li><a class="nav-link" href="{{ route('giave') }}">Giá vé</a></li>
+            <li><a class="nav-link" href="{{ route('news') }}">Tin tức và ưu đãi</a></li>
             @if(Auth::check())
-              <li><a class="nav-link" href="">{{Auth::User()->name}}</a></li>
+              <li><a class="nav-link" href="{{ route('thongtin') }}">{{Auth::User()->name}}</a></li>
               <li><a class="nav-link" href="{{ route('logout') }}">Đăng xuất</a></li>
             @else
               <li><a class="nav-link" href="{{ route('login') }}">Đăng nhập</a></li>
             @endif
-          </ul>
-          <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-            <li>
-              <a class="nav-link" href="{{ asset('Fe/cart.html') }}"
-                ><img src="{{ asset('Fe/images/cart.svg') }}" alt="cart"
-              /></a>
-            </li>
           </ul>
         </div>
       </div>

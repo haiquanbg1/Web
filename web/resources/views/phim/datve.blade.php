@@ -23,15 +23,15 @@
       <!--Ghe ngoi-->
       <div id="screen_form">
         <div class="seat-status pb-3" style="margin-bottom:10px; align-items:center; justify-content:center; display:flex">
-          <div class="col-lg-3 col-md-3 col-xl-3">
+        <div class="col-lg-4 col-md-4 col-xl-4" style="align-items:center; justify-content:center; display:flex">
             <img width="35" height="35" src="{{ asset('Fe/images/seat-unselect-normal.png') }}">
             <span>Ghế trống</span>
           </div>
-          <div class="col-lg-3 col-md-3 col-xl-3">
+          <div class="col-lg-4 col-md-4 col-xl-4" style="align-items:center; justify-content:center; display:flex">
             <img width="35" height="35" src="{{ asset('Fe/images/seat-select-normal.png') }}">
             <span>Ghế đang chọn</span>
           </div>
-          <div class="col-lg-3 col-md-3 col-xl-3">
+          <div class="col-lg-4 col-md-4 col-xl-4" style="align-items:center; justify-content:center; display:flex">
             <img width="35" height="35" src="{{ asset('Fe/images/seat-buy-normal.png') }}">
             <span>Ghế đã bán</span>
           </div>
@@ -209,9 +209,10 @@
           <?php
           $count = 0;
           if ($ve != null) {
-            $dataVe = $ve->where('Ma_khach_hang', '=', $user)->where('Ma_lich_chieu', '=', $LC->Ma_lich_chieu);
+            $dataVe = $ve->where('Ma_khach_hang', '=', $user)->where('Ma_lich_chieu', '=', $LC->Ma_lich_chieu)->where('Trang_thai', '=', 1);
             foreach ($dataVe as $data) {
-              $count += $data->Gia;
+              $Gia = $DataGhe->find($data->Ma_ghe)->Gia;
+              $count += $Gia;
             }
           }
           echo $count . " vnd";
@@ -299,7 +300,7 @@
             <?php
             $count = "";
             if ($ve != null) {
-              $dataVe = $ve->where('Ma_khach_hang', '=', $user)->where('Ma_lich_chieu', '=', $LC->Ma_lich_chieu);
+              $dataVe = $ve->where('Ma_khach_hang', '=', $user)->where('Ma_lich_chieu', '=', $LC->Ma_lich_chieu)->where('Trang_thai', '=', 1);
               foreach ($dataVe as $data) {
                 $ghe = $DataGhe->find($data->Ma_ghe);
                 $count = $count . $ghe->Ten_ghe . ", ";

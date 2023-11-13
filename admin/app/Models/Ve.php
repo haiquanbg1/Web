@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ve extends Model
 {
-    protected $fillable = ['Ma_ghe', 'Ma_khach_hang', 'Ma_lich_chieu', 'Gia', 'Trang_thai'];
+    protected $fillable = ['Ma_ghe', 'Ma_khach_hang', 'Ma_lich_chieu', 'Trang_thai'];
     use HasFactory;
 }

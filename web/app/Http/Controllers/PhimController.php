@@ -8,6 +8,7 @@ use App\Models\LichChieu;
 use App\Models\Ghe;
 use Carbon\Carbon;
 use App\Models\Ve;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -54,14 +55,19 @@ class PhimController extends Controller
 
     public function detail($Ma_phim)
     {
-        $Date = Carbon::now('Asia/Ho_Chi_Minh');
-        $DataDS = $this->danhsachphim->find($Ma_phim);
-        $DataCT = $this->chitietphim->find($Ma_phim);
-        $LC = $this->lichchieu->all()->sortBy('Gio_chieu')->where('Ma_phim', '=', $DataDS->Ma_phim);
+        if(Auth::check())
+        {
+            $user = Auth::user();
+            $Date = Carbon::now('Asia/Ho_Chi_Minh');
+            $DataDS = $this->danhsachphim->find($Ma_phim);
+            $DataCT = $this->chitietphim->find($Ma_phim);
+            $LC = $this->lichchieu->all()->sortBy('Gio_chieu')->where('Ma_phim', '=', $DataDS->Ma_phim);
 
-        if($Date < $DataDS->Ngay_khoi_chieu)
-            $Date = new Carbon($DataDS->Ngay_khoi_chieu);
-        return view('phim.phimdetails', compact('DataDS', 'DataCT', 'LC', 'Date'));
+            if($Date < $DataDS->Ngay_khoi_chieu)
+                $Date = new Carbon($DataDS->Ngay_khoi_chieu);
+            return view('phim.phimdetails', compact('DataDS', 'DataCT', 'LC', 'Date', 'user'));
+        }
+        return redirect()->route('login');
     }
 
     public function datve($Ma_phim, $Ma_lich_chieu)

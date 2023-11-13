@@ -52,7 +52,7 @@
           </div>
           <!-- /.col -->
         </div>
-        @csrf
+        {{ csrf_field() }}
       </form>
       <div class="social-auth-links text-center mb-3">
         <p>- OR -</p>

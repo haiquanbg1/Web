@@ -61,8 +61,9 @@
                                 <?php 
                                 $count = "";
                                 foreach ($data as $dataVe) {
-                                    $ghe = $DataGhe->find($dataVe->Ma_ghe);
-                                    $count = $count . $ghe->Ten_ghe . ", ";
+                                    $ghe = $DataGhe->where($dataVe->Trang_thai, '=', 1)->find($dataVe->Ma_ghe);
+                                    if($ghe != null)
+                                      $count = $count . $ghe->Ten_ghe . ", ";
                                   } 
                                   $ans = $count;
                                   if ($count != "")

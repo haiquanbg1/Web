@@ -61,8 +61,7 @@ class LichChieuController extends Controller
             $this->ve->create([
                 'Ma_ghe' => $data->Ma_ghe,
                 'Ma_khach_hang' => 0,
-                'Ma_lich_chieu' => $newLC->Ma_lich_chieu,
-                'Gia' => $data->Gia
+                'Ma_lich_chieu' => $newLC->Ma_lich_chieu
             ]);
         }
         return redirect()->route('lichchieu.index');

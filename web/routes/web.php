@@ -24,6 +24,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/giave',[HomeController::class,'giave'])->name('giave');
+
+Route::get('/news',[HomeController::class,'news'])->name('news');
+
+Route::get('/thongtin', [HomeController::class, 'thongtin'])->name('thongtin');
+
 Route::prefix('home')->group(function (){
     Route::get('/', [
         'as' => 'home.index',
@@ -31,10 +37,6 @@ Route::prefix('home')->group(function (){
     ]);
     Route::get('/logout',[HomeController::class,'logout'])->name('logout');
 });
-
-// route::middleware(['auth']) ->group(function(){
-//     route::get('home/admin',[HomeController::class,'home']) -> name('admin');
-// });
 
 Route::prefix('phim')->group(function() {
     Route::get('/', [
